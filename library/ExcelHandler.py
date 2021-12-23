@@ -39,6 +39,16 @@ class ExcelHandler:
         except (InvalidFileException, FileNotFoundError) as error:
             print(f"FILE LOADING ERROR: {error}")
 
+    def close_excel(self, path_to_file=None, alias=None):
+        if alias is not None:
+            del (self.loaded_workbooks[alias])
+            del (self.alias_dict[alias])
+        elif path_to_file is not None:
+            del (self.loaded_workbooks[os.path.basename(path_to_file)])
+            del (self.alias_dict[path_to_file])
+        else:
+            print("Specify the path to file or the alias associated to the workbook")
+
     def switch_workbook(self, file_name=None, alias=None, suppress_msg=False):
         for key, values in self.loaded_workbooks.items():
             if file_name is None and alias is None:
@@ -158,15 +168,14 @@ class ExcelHandler:
         pass
 
     def copy_data(self, sheet_range, save_alias,
-                  datetime_fmt="%m/%d/%Y", true_value=True, full_col=False):
+                  datetime_fmt="%m/%d/%Y", true_value=True, entire_col=False):
         data = []
         ws = self.active_excel_file.active
         boundaries = range_boundaries(sheet_range)
-        print(boundaries)
         min_col, min_row = boundaries[0], boundaries[1]
         max_col, max_row = boundaries[2], boundaries[3]
 
-        if full_col is True:
+        if entire_col is True:
             max_row = None
 
         for row in ws.iter_rows(min_row=min_row, min_col=min_col,
@@ -182,17 +191,15 @@ class ExcelHandler:
         self.save_storage[save_alias] = data
         print(f"Data saved to storage. Alias: {save_alias}.")
 
-    def paste_data(self, sheet_range, save_alias, overwrite=False, full_col=False):
+    def paste_data(self, sheet_range, save_alias, overwrite=False, entire_col=False):
         ws = self.active_excel_file.active
         data_set = self.save_storage[save_alias]
-        print("Selected data to paste: " + str(data_set))
-        # target_range = range_boundaries(sheet_range)
-        if type(ws[sheet_range]) is Cell and full_col is True:
+        if type(ws[sheet_range]) is Cell and entire_col is True:
             # Q2 <- Goal
             col_letter = ws[sheet_range].column_letter
             maximum_row = ws.max_row
             sheet_range = ":".join([sheet_range, col_letter+str(maximum_row)])
-        elif type(ws[sheet_range]) is tuple and full_col is True:
+        elif type(ws[sheet_range]) is tuple and entire_col is True:
             # Q2:R2 <- Goal
             maximum_row = ws.max_row
             temp = sheet_range.split(":")[1].replace(re.findall(r"\d+", sheet_range.split(":")[1])[0], str(maximum_row))
@@ -261,6 +268,7 @@ class ExcelHandler:
                 formulae_found = False
 
         if formulae_found is True:
+            # dissect formulae here
             replica_reference = ws[reference_cell_ref].value
             if "LOOKUP" in replica_reference.upper():
                 return replica_reference.replace(str(reference_row_num), str(row_num), 1)
@@ -268,6 +276,9 @@ class ExcelHandler:
                 return replica_reference.replace(str(reference_row_num), str(row_num))
         else:
             return "\'Error replicating formulae"
+
+    def apply_formulae(self, formulae, sheet_range, entire_col=False, entire_row=False, has_header=False):
+        pass
 
     def create_chart(self):
         pass

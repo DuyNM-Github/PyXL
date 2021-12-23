@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     excel.switch_workbook("food")
     excel.set_active_sheet("FoodSales")
-    new_rows = excel.extend_table_body("Sales_Data", 2)
+    new_rows = excel.extend_table_body("Sales_Data", 3)
     print(new_rows)
     for new_row in new_rows:
         excel.insert_data_to_row(new_row, [(datetime.datetime(2022, 5, 1, 0, 0).strftime("%m-%d-%Y")),
@@ -40,9 +40,9 @@ if __name__ == '__main__':
     print("Here: " + str(excel.get_table_data("Sales_Data")))
 
     excel.switch_workbook("finance")
-    excel.copy_data("A2:B2", "test", full_col=True)
-    excel.paste_data("Q2:R2", "test", full_col=True, overwrite=True)
+    excel.copy_data("A2:B5", "test", entire_col=False)
+    excel.paste_data("Q2:R5", "test", entire_col=False, overwrite=True)
 
-    # excel.save_active_workbook()
+    excel.save_active_workbook()
 
 
