@@ -2,12 +2,13 @@ import os
 import re
 from datetime import datetime
 
+from openpyxl.chart import BarChart, LineChart, Series, Reference
+from openpyxl.chart.axis import DateAxis
 from openpyxl import Workbook, load_workbook
 from openpyxl.cell import Cell
-from openpyxl.formula.translate import Translator, TranslatorError
-from openpyxl.utils.exceptions import InvalidFileException
-from openpyxl.worksheet.table import Table
 from openpyxl.utils.cell import range_boundaries
+from openpyxl.utils.exceptions import InvalidFileException
+from copy import deepcopy
 
 
 class ExcelHandler:
@@ -22,9 +23,9 @@ class ExcelHandler:
         self.active_workbook_filepath = None
         self.loaded_workbooks = {}
         self.alias_dict = {}
-        self.save_storage ={}
+        self.save_storage = {}
 
-    def open_excel(self, path_to_file, alias=None):
+    def open_workbook(self, path_to_file, alias=None):
         try:
             temp = load_workbook(path_to_file)
             self.active_excel_file = temp
@@ -33,20 +34,28 @@ class ExcelHandler:
                 self.alias_dict[alias] = path_to_file
             else:
                 self.loaded_workbooks[os.path.basename(path_to_file)] = temp
-                self.alias_dict[path_to_file] = path_to_file
+                self.alias_dict[os.path.basename(path_to_file)] = path_to_file
             self.active_workbook_filepath = path_to_file
             print(f"Excel file {os.path.basename(path_to_file)} loaded")
         except (InvalidFileException, FileNotFoundError) as error:
             print(f"FILE LOADING ERROR: {error}")
 
-    def close_excel(self, path_to_file=None, alias=None):
+    def close_workbook(self, file_name=None, alias=None):
         if alias is not None:
+            if self.get_active_workbook() == self.loaded_workbooks[alias]:
+                self.active_excel_file = None
             del (self.loaded_workbooks[alias])
             del (self.alias_dict[alias])
-        elif path_to_file is not None:
-            del (self.loaded_workbooks[os.path.basename(path_to_file)])
-            del (self.alias_dict[path_to_file])
-        else:
+            print(f"Workbook with alias \'{alias}\' closed")
+        elif file_name is not None:
+            if "/" in file_name or "\\" in file_name:
+                file_name = os.path.basename(file_name)
+            if self.get_active_workbook() == self.loaded_workbooks[file_name]:
+                self.active_excel_file = None
+            del (self.loaded_workbooks[os.path.basename(file_name)])
+            del (self.alias_dict[file_name])
+            print(f"Workbook with alias \'{os.path.basename(file_name)}\' closed")
+        elif file_name is None and alias is None:
             print("Specify the path to file or the alias associated to the workbook")
 
     def switch_workbook(self, file_name=None, alias=None, suppress_msg=False):
@@ -191,14 +200,14 @@ class ExcelHandler:
         self.save_storage[save_alias] = data
         print(f"Data saved to storage. Alias: {save_alias}.")
 
-    def paste_data(self, sheet_range, save_alias, overwrite=False, entire_col=False):
+    def paste_data(self, sheet_range, save_alias, overwrite=False, entire_col=False, dereference_on_paste=True):
         ws = self.active_excel_file.active
         data_set = self.save_storage[save_alias]
         if type(ws[sheet_range]) is Cell and entire_col is True:
             # Q2 <- Goal
             col_letter = ws[sheet_range].column_letter
             maximum_row = ws.max_row
-            sheet_range = ":".join([sheet_range, col_letter+str(maximum_row)])
+            sheet_range = ":".join([sheet_range, col_letter + str(maximum_row)])
         elif type(ws[sheet_range]) is tuple and entire_col is True:
             # Q2:R2 <- Goal
             maximum_row = ws.max_row
@@ -212,8 +221,11 @@ class ExcelHandler:
                     self.insert_data_to_row(cell.coordinate, data_set[counter], overwrite=overwrite)
             counter += 1
 
+        if dereference_on_paste is True:
+            del (self.save_storage[save_alias])
+
     def insert_data_to_row(self, row_ref, data,
-                           auto_replicate_formulae=True, overwrite=False):
+                           overwrite=False):
         ws = self.active_excel_file.active
         counter = 0
         if ":" in row_ref:
@@ -253,7 +265,7 @@ class ExcelHandler:
             reference_row_num = row_num - 1
             reference_cell = cell_ref.coordinate.replace(str(row_num), str(reference_row_num))
             if "=" in ws[reference_cell].value:
-                reference_cell_ref = cell_ref.coordinate.replace(str(row_num), str(row_num-1))
+                reference_cell_ref = cell_ref.coordinate.replace(str(row_num), str(row_num - 1))
             else:
                 print(f"ERROR: The reference row ABOVE {cell_ref} does not contains formulae")
                 formulae_found = False
@@ -262,7 +274,7 @@ class ExcelHandler:
             reference_row_num = row_num + 1
             reference_cell = cell_ref.coordinate.replace(str(row_num), str(reference_row_num))
             if "=" in ws[reference_cell].value:
-                reference_cell_ref = cell_ref.coordinate.replace(str(row_num), str(row_num+1))
+                reference_cell_ref = cell_ref.coordinate.replace(str(row_num), str(row_num + 1))
             else:
                 print(f"ERROR: The reference row BELOW {cell_ref} does not contains formulae")
                 formulae_found = False
@@ -280,6 +292,75 @@ class ExcelHandler:
     def apply_formulae(self, formulae, sheet_range, entire_col=False, entire_row=False, has_header=False):
         pass
 
-    def create_chart(self):
+    def create_chart_line(self):
+        ws = self.active_excel_file.active
+        chart = LineChart()
         pass
+
+    def create_chart_col(self,
+                         target_location,
+                         chart_title=None,
+                         chart_x_title=None,
+                         chart_y_title=None,
+                         reference_data_range=None,
+                         reference_category_range=None,
+                         chart_style=1,
+                         chart_shape=1,
+                         chart_grouping=None,
+                         chart_overlap=None):
+        ws = self.active_excel_file.active
+        chart = BarChart()
+        chart.type = "col"
+        if type(ws[target_location]) is not Cell:
+            print("The target location for the chart should be a single cell")
+            return
+        if reference_data_range is None:
+            print("The range which will make up the chart data must be specified")
+            return
+        else:
+            data_boundaries = range_boundaries(reference_data_range)
+            data = Reference(ws, min_col=data_boundaries[0], min_row=data_boundaries[1],
+                             max_col=data_boundaries[2], max_row=data_boundaries[3])
+            chart.add_data(data, titles_from_data=True)
+
+        if reference_category_range is not None:
+            category_boundary = range_boundaries(reference_category_range)
+            cats = Reference(ws, min_col=category_boundary[0], min_row=category_boundary[1],
+                             max_col=category_boundary[2], max_row=category_boundary[3])
+            chart.set_categories(cats)
+        if chart_title is not None:
+            chart.title = chart_title
+        if chart_x_title is not None:
+            chart.x_axis.title = chart_x_title
+        if chart_y_title is not None:
+            chart.y_axis.title = chart_y_title
+
+        chart.style = chart_style
+        chart.shape = chart_shape
+        if chart_overlap is not None:
+            chart.overlap = chart_overlap
+        if chart_grouping is not None:
+            chart.grouping = chart_grouping
+
+        ws.add_chart(chart, target_location)
+        return chart
+
+    def copy_chart(self, chart, save_alias):
+        chart = deepcopy(chart)
+        self.save_storage[save_alias] = chart
+        print(f"Chart has been copied with alias: {save_alias}")
+
+    def paste_chart(self, save_alias, target_location=None, auto_paste=True):
+        ws = self.active_excel_file.active
+        if save_alias not in self.save_storage.keys():
+            print("Save alias does not exist")
+            return
+        if type(ws[target_location]) is not Cell and auto_paste is True:
+            print("The target location for the chart should be a single cell")
+            return
+        if auto_paste is False:
+            return self.save_storage[save_alias]
+        else:
+            ws.add_chart(self.save_storage[save_alias], target_location)
+
 

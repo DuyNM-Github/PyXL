@@ -9,9 +9,9 @@ if __name__ == '__main__':
     SAMPLE_FOLDER = "./sample/"
 
     excel = ExcelHandler()
-    excel.open_excel(os.path.join(SAMPLE_FOLDER, "Financial Sample.xlsx"), alias="finance")
-    excel.open_excel(os.path.join(SAMPLE_FOLDER, "sampledatafoodsales.xlsx"), alias="food")
-    excel.open_excel(os.path.join(SAMPLE_FOLDER, "exceltables.xlsx"), alias="tables")
+    excel.open_workbook(os.path.join(SAMPLE_FOLDER, "Financial Sample.xlsx"), alias="finance")
+    excel.open_workbook(os.path.join(SAMPLE_FOLDER, "sampledatafoodsales.xlsx"), alias="food")
+    excel.open_workbook(os.path.join(SAMPLE_FOLDER, "exceltables.xlsx"), alias="tables")
     print(excel.get_loaded_workbooks())
 
     excel.switch_workbook("food")
@@ -43,6 +43,24 @@ if __name__ == '__main__':
     excel.copy_data("A2:B5", "test", entire_col=False)
     excel.paste_data("Q2:R5", "test", entire_col=False, overwrite=True)
 
+    excel.close_workbook(alias="finance")
+
+    print(excel.get_active_workbook())
+
+    excel.open_workbook(path_to_file="./sample/Financial Sample.xlsx")
+    print(excel.get_active_workbook())
+    print(excel.loaded_workbooks)
+    excel.close_workbook(file_name="./sample/Financial Sample.xlsx")
+    print(excel.get_active_workbook())
+    excel.open_workbook(path_to_file="./sample/Financial Sample.xlsx", alias="finance")
+
+    excel.open_workbook(path_to_file="sample/chart.xlsx", alias="chart")
+    chart = excel.create_chart_col("A10", chart_title="Sample chart",
+                                   chart_x_title="Sample Length (mm)", chart_y_title="Test number",
+                                   reference_data_range="B1:C7", reference_category_range="A2:A7",
+                                   chart_style=4)
+
+    excel.copy_chart(chart, "testcopy")
+    excel.paste_chart("testcopy", "K10")
+
     excel.save_active_workbook()
-
-
