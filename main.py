@@ -1,14 +1,18 @@
-import os
 import datetime
+import os
 from time import strftime
 
 from library.ExcelHandler import ExcelHandler
+from library.ProcessingUtil import ProcessingUtil
 
 if __name__ == '__main__':
 
     SAMPLE_FOLDER = "./sample/"
 
+    util = ProcessingUtil()
     excel = ExcelHandler()
+
+    """
     excel.open_workbook(os.path.join(SAMPLE_FOLDER, "Financial Sample.xlsx"), alias="finance")
     excel.open_workbook(os.path.join(SAMPLE_FOLDER, "sampledatafoodsales.xlsx"), alias="food")
     excel.open_workbook(os.path.join(SAMPLE_FOLDER, "exceltables.xlsx"), alias="tables")
@@ -17,7 +21,7 @@ if __name__ == '__main__':
     excel.switch_workbook("food")
     excel.set_active_sheet("FoodSales")
     print(excel.get_sheet_value("E2"))
-    print(excel.get_sheet_value("A3:H3"))
+    print("A3:H3 -> " + str(excel.get_sheet_value("A3:H3", data_only=True)))
     print(excel.get_sheet_value("4:5"))
     print(excel.get_sheet_value("6"))
 
@@ -43,6 +47,7 @@ if __name__ == '__main__':
     excel.copy_data("A2:B5", "test", entire_col=False)
     excel.paste_data("Q2:R5", "test", entire_col=False, overwrite=True)
 
+    # excel.save_active_workbook()
     excel.close_workbook(alias="finance")
 
     print(excel.get_active_workbook())
@@ -55,12 +60,25 @@ if __name__ == '__main__':
     excel.open_workbook(path_to_file="./sample/Financial Sample.xlsx", alias="finance")
 
     excel.open_workbook(path_to_file="sample/chart.xlsx", alias="chart")
-    chart = excel.create_chart_col("A10", chart_title="Sample chart",
-                                   chart_x_title="Sample Length (mm)", chart_y_title="Test number",
-                                   reference_data_range="B1:C7", reference_category_range="A2:A7",
-                                   chart_style=4)
+    chart1 = excel.create_chart_bar("A10", chart_title="Sample bar chart",
+                                    chart_x_title="Sample Length (mm)", chart_y_title="Test number",
+                                    reference_data_range="B1:C7", reference_category_range="A2:A7",
+                                    chart_style=4)
 
-    excel.copy_chart(chart, "testcopy")
-    excel.paste_chart("testcopy", "K10")
+    excel.copy_chart(chart1, "testcopy")
+    # excel.paste_chart("testcopy", "K10")
+    chart2 = excel.create_chart_line("K10", chart_title="Sample line chart",
+                                     chart_x_title="Sample Length (mm)", chart_y_title="Test number",
+                                     reference_data_range="B1:C7", chart_style=2)
 
-    excel.save_active_workbook()
+    excel.switch_workbook("finance")
+    excel.remove_duplicates_from_column("A", skip_empty_cell=True, save_alias="dupes")
+    excel.remove_blanks_from_column("A")
+
+    print(excel.split_strings(["UserA:2710:A", "UserB:1027:B"], ":", take_index=1))
+
+    # excel.save_active_workbook()
+    """
+
+    print(util.calc_check_content("./sample/era_status_template.txt"))
+

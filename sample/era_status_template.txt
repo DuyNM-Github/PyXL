@@ -1,0 +1,177 @@
+Dear: Will Boenig (ascendbehavior) 
+
+
+Your Claims have been adjudicated by the Payer. Electronic Payment / Advise information has been received by Office Ally and summarized as follows.
+
+==================================================
+------- HEALTH CARE CLAIM PAYMENT/ADVICE -------
+==================================================
+
+
+========================================================================================================================================================
+Check#                         Amount          # Claims       NPI or Tax ID           Payee                         Date       
+========================================================================================================================================================
+0900920831                     4727.39         6              1124532718              ASCEND BEHAVIOR PARTNERS      12/30/2021
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Check#                         Patient ID         Last,First          Charge Amt  Payment Amt  Accnt#        Status                         Payer                             
+0900920831                     A04845542          RITCHIE,CASH        2200.00     1034.69      19117186      PROCESSED AS PRIMARY           AZCH-COMPLETE CARE PLAN           
+                                                                                                                                            1870 W. RIO SALADO PARKWAY        
+                                                                                                                                            TEMPE,AZ 85281                    
+                                                                                                                                            Tax ID: 81-2246513                
+                                                                                                Payer Claim Control Number: U358HAE09380                  
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      11/03/2021 96130  200.00       111.30       88.70          NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     88.70   CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      11/03/2021 96131  200.00       84.21        115.79         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     115.79  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      11/09/2021 96130  200.00       111.30       88.70          NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     88.70   CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      11/09/2021 96131  600.00       252.64       347.36         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     347.36  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      11/10/2021 96130  200.00       111.30       88.70          NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     88.70   CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      11/10/2021 96131  600.00       252.64       347.36         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     347.36  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/09/2021 96130  200.00       111.30       88.70          NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     88.70   CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Check#                         Patient ID         Last,First          Charge Amt  Payment Amt  Accnt#        Status                         Payer                             
+0900920831                     A97955943          ZEPEDA,MATEO T      200.00      132.50       19104357      PROCESSED AS PRIMARY           AZCH-COMPLETE CARE PLAN           
+                                                                                                                                            1870 W. RIO SALADO PARKWAY        
+                                                                                                                                            TEMPE,AZ 85281                    
+                                                                                                                                            Tax ID: 81-2246513                
+                                                                                                Payer Claim Control Number: U357HAE13940                  
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      10/01/2021 97153  200.00       132.50       67.50          NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     67.50   CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Check#                         Patient ID         Last,First          Charge Amt  Payment Amt  Accnt#        Status                         Payer                             
+0900920831                     A15110278          CORRAL PEDRAZA,SOPH 150.00      0.00         19105289      DENIED                         AZCH-COMPLETE CARE PLAN           
+                                                                                                                                            1870 W. RIO SALADO PARKWAY        
+                                                                                                                                            TEMPE,AZ 85281                    
+                                                                                                                                            Tax ID: 81-2246513                
+                                                                                                Payer Claim Control Number: U357HAE15422                  
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/16/2021 97156  150.00       0.00         150.00         Missing/incomplete/invalid/inappropriate place of service.                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     150.00  THE PROCEDURE CODE/BILL TYPE IS INCONSISTENT WITH THE PLACE OF SERVICE.             
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Check#                         Patient ID         Last,First          Charge Amt  Payment Amt  Accnt#        Status                         Payer                             
+0900920831                     A12220477          BILDERBACK,GRACIE   200.00      144.40       18971471      PROCESSED AS PRIMARY           AZCH-COMPLETE CARE PLAN           
+                                                                                                                                            1870 W. RIO SALADO PARKWAY        
+                                                                                                                                            TEMPE,AZ 85281                    
+                                                                                                                                            Tax ID: 81-2246513                
+                                                                                                Payer Claim Control Number: U357HAE13900                  
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      10/05/2021 97151  200.00       144.40       55.60          NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     55.60   CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Check#                         Patient ID         Last,First          Charge Amt  Payment Amt  Accnt#        Status                         Payer                             
+0900920831                     A05913843          MALDONADO,DAMIAN    3920.00     2567.80      19105287      PROCESSED AS PRIMARY           AZCH-COMPLETE CARE PLAN           
+                                                                                                                                            1870 W. RIO SALADO PARKWAY        
+                                                                                                                                            TEMPE,AZ 85281                    
+                                                                                                                                            Tax ID: 81-2246513                
+                                                                                                Payer Claim Control Number: U357HAE14950                  
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/13/2021 97153  560.00       371.00       189.00         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     189.00  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/13/2021 97151  400.00       288.80       111.20         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     111.20  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/14/2021 97153  560.00       371.00       189.00         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     189.00  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/15/2021 97153  640.00       424.00       216.00         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     216.00  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/15/2021 97155  400.00       212.00       188.00         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     188.00  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/17/2021 97153  640.00       424.00       216.00         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     216.00  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/18/2021 97153  720.00       477.00       243.00         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     243.00  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Check#                         Patient ID         Last,First          Charge Amt  Payment Amt  Accnt#        Status                         Payer                             
+0900920831                     A95283703          SANTANA,MATTEO      1580.00     848.00       19105288      PROCESSED AS PRIMARY           AZCH-COMPLETE CARE PLAN           
+                                                                                                                                            1870 W. RIO SALADO PARKWAY        
+                                                                                                                                            TEMPE,AZ 85281                    
+                                                                                                                                            Tax ID: 81-2246513                
+                                                                                                Payer Claim Control Number: U357HAE15235                  
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/13/2021 97153  640.00       424.00       216.00         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     216.00  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/13/2021 97155  300.00       0.00         300.00         Missing/incomplete/invalid/inappropriate place of service.                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     300.00  THE PROCEDURE CODE/BILL TYPE IS INCONSISTENT WITH THE PLACE OF SERVICE.             
+
+          Line Item:  Svc Date   CPT    Charge Amt   Payment Amt  Total Adj Amt  Remarks                                                                                      
+                      12/14/2021 97153  640.00       424.00       216.00         NO REMARKS                                                                                   
+
+                                Adjustment Group            Adj Amt Translated Reason Code
+                                CONTRACTUAL OBLIGATIONS     216.00  CHARGES EXCEED YOUR CONTRACTED/LEGISLATED FEE ARRANGEMENT.                          
